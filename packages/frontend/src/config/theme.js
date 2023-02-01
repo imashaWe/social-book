@@ -12,10 +12,10 @@ export const theme = createTheme({
     palette: {
         type: 'light',
         primary: {
-            main: '#A084DC',
+            main: process.env.REACT_APP_PRIMARY_COLOR,
         },
         secondary: {
-            main: 'rgb(220, 0, 78)',
+            main: process.env.REACT_APP_SECONDARY_COLOR
         },
         background: {
             default: '#fff',
