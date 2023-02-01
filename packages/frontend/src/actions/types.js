@@ -1,0 +1,6 @@
+export const SET_FORM_SUBMITTING = 'SET_FORM_SUBMITTING';
+export const SET_FORM_SUCCESS = 'SET_FORM_SUCCESS';
+export const SET_FORM_FAILURE = 'SET_FORM_FAILURE';
+
+export const USER_LOGIN = 'USER_LOGIN';
+export const USER_LOGOUT = 'USER_LOGOUT';
