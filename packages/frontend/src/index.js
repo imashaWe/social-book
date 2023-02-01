@@ -8,6 +8,7 @@ import {Provider} from "react-redux";
 import store from "./store/store";
 import {ThemeProvider} from "@mui/material";
 import {theme} from "./config/theme";
+import './config/axios';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
