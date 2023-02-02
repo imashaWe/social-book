@@ -7,7 +7,7 @@ Live chat application.
 
 **Front End:** React, Redux, Material UI
 
-**Back End:** Node, ExpressJS
+**Back End:** NodeJS, ExpressJS
 
 **Database:** MongoDB
 
@@ -52,7 +52,7 @@ Install dependencies for backend
 Start the backend server
 
 ```bash
-  npm run start
+  yarn  run start
 ```
 
 Install dependencies for frontend
@@ -67,7 +67,7 @@ Install dependencies for frontend
 Start the frontend
 
 ```bash
-  npm run start
+  yarn  run start
 ```
 
 
