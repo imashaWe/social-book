@@ -3,6 +3,7 @@ import Post from "../components/post";
 import AddIcon from '@mui/icons-material/Add';
 import {useState} from "react";
 import CreatePostDialog from "../components/create-post-dialog";
+import PostSkeleton from "../components/post-skeleton";
 
 const _SAMPLE_POST = {
     creator: {
@@ -27,6 +28,7 @@ export default function Home() {
     }
 
     const postListing = Array.from(new Array(10)).map((post, index) => <Post key={index} post={_SAMPLE_POST}/>);
+    const loadingSkeleton = Array.from(new Array(10)).map((post, index) => <PostSkeleton key={index}/>);
 
     return (
         <Paper elevation={0} variant="outlined" square
