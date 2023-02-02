@@ -1,8 +1,9 @@
-import {LOGIN_PATH} from "./paths";
+import {LOGIN_PATH, REGISTER_PATH} from "./paths";
 import Home from "../views/pages/home";
 import PageNotFound from "../views/pages/page-not-found";
 import AuthLayout from "../views/layouts/auth-layout";
 import Login from "../views/pages/auth/login";
+import Register from "../views/pages/auth/register";
 
 const routes = [
     {
@@ -11,9 +12,20 @@ const routes = [
         element: <Home/>
     },
     {
-        path: LOGIN_PATH,
-        name: 'Login',
-        element: <AuthLayout><Login/></AuthLayout>
+        path: 'auth',
+        name: 'Auth',
+        children: [
+            {
+                path: LOGIN_PATH,
+                name: 'Login',
+                element: <AuthLayout> <Login/></AuthLayout>
+            },
+            {
+                path: REGISTER_PATH,
+                name: 'Register',
+                element: <AuthLayout><Register/></AuthLayout>
+            }
+        ]
     },
     {
         path: '*',
