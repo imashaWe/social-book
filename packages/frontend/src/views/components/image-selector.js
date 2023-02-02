@@ -25,7 +25,7 @@ export default function ImageSelector({handleImageChange}) {
             }}
             onClick={() => inputRef.current.click()}
         >
-            <input ref={inputRef} type='file' style={{display: 'none'}} onChange={onImageSelect}/>
+            <input ref={inputRef} type='file' style={{display: 'none'}} accept="image/*" onChange={onImageSelect}/>
             {
                 image ?
                     <img src={URL.createObjectURL(image)}
