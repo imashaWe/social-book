@@ -4,12 +4,13 @@ import PageNotFound from "../views/pages/page-not-found";
 import AuthLayout from "../views/layouts/auth-layout";
 import Login from "../views/pages/auth/login";
 import Register from "../views/pages/auth/register";
+import MainLayout from "../views/layouts/main-layout";
 
 const routes = [
     {
         index: true,
         name: 'Home',
-        element: <Home/>
+        element: <MainLayout><Home/></MainLayout>
     },
     {
         path: 'auth',
@@ -18,7 +19,7 @@ const routes = [
             {
                 path: LOGIN_PATH,
                 name: 'Login',
-                element: <AuthLayout> <Login/></AuthLayout>
+                element: <AuthLayout><Login/></AuthLayout>
             },
             {
                 path: REGISTER_PATH,
