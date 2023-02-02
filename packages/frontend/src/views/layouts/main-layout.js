@@ -9,7 +9,7 @@ import InputBase from '@mui/material/InputBase';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
-import {Avatar} from "@mui/material";
+import {Avatar, Container} from "@mui/material";
 import {stringToColor} from "../../helpers/string-to-color";
 import nameToTitle from "../../helpers/name-to-title";
 
@@ -147,7 +147,9 @@ export default function MainLayout({children}) {
                 </AppBar>
                 {renderMenu}
             </Box>
-            {children}
+            <Container component="main" maxWidth="md">
+                {children}
+            </Container>
         </>
     );
 }
