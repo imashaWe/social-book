@@ -9,9 +9,9 @@ import InputBase from '@mui/material/InputBase';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
-import {Avatar, Container} from "@mui/material";
-import {stringToColor} from "../../helpers/string-to-color";
+import {Container} from "@mui/material";
 import nameToTitle from "../../helpers/name-to-title";
+import ProfileAvatar from "../common/profile-avatar";
 
 const Search = styled('div')(({theme}) => ({
     position: 'relative',
@@ -137,10 +137,7 @@ export default function MainLayout({children}) {
                                 onClick={handleProfileMenuOpen}
                                 color="inherit"
                             >
-                                <Avatar
-                                    alt={fullName}
-                                    src="/static/images/avatar/2.jpg"
-                                    sx={{bgcolor: stringToColor(fullName)}}/>
+                                <ProfileAvatar user={user}/>
                             </IconButton>
                         </Box>
                     </Toolbar>

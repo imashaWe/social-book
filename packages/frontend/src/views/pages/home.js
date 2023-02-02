@@ -4,6 +4,14 @@ import AddIcon from '@mui/icons-material/Add';
 import {useState} from "react";
 import CreatePostDialog from "../components/create-post-dialog";
 
+const _SAMPLE_POST = {
+    creator: {
+        fistName: 'imasha',
+        lastName: 'weerakoon'
+    },
+    image: 'https://placeimg.com/640/480/any',
+    description: 'Sample Post'
+}
 export default function Home() {
     const [open, setOpen] = useState(false);
 
@@ -18,7 +26,7 @@ export default function Home() {
 
     }
 
-    const postListing = Array.from(new Array(10)).map((post, index) => <Post key={index} post={post}/>);
+    const postListing = Array.from(new Array(10)).map((post, index) => <Post key={index} post={_SAMPLE_POST}/>);
 
     return (
         <Paper elevation={0} variant="outlined" square

@@ -1,5 +1,4 @@
 import {
-    Avatar,
     Card,
     CardActions,
     CardContent,
@@ -11,32 +10,30 @@ import {
 } from "@mui/material";
 import FavoriteIcon from '@mui/icons-material/FavoriteOutlined';
 import ShareIcon from '@mui/icons-material/Share';
-import {red} from "@mui/material/colors";
+import ProfileAvatar from "../common/profile-avatar";
+import nameToTitle from "../../helpers/name-to-title";
 
 export default function Post({post}) {
+    const fullName = nameToTitle(`${post.creator.fistName} ${post.creator.lastName}`);
     return (
         <Card>
             <CardHeader
                 avatar={
-                    <Avatar sx={{bgcolor: red[500]}} aria-label="recipe">
-                        R
-                    </Avatar>
+                    <ProfileAvatar user={post.creator}/>
                 }
 
-                title="Shrimp and Chorizo Paella"
+                title={fullName}
                 subheader="September 14, 2016"
             />
             <CardMedia
                 component="img"
                 height="400"
-                image="https://res.cloudinary.com/dxrhrbot0/image/upload/v1657256016/sample.jpg"
-                alt="Paella dish"
+                image={post.image}
+                alt="Post Image"
             />
             <CardContent>
                 <Typography variant="body2" color="text.secondary">
-                    This impressive paella is a perfect party dish and a fun meal to cook
-                    together with your guests. Add 1 cup of frozen peas along with the mussels,
-                    if you like.
+                    {post.description}
                 </Typography>
             </CardContent>
             <CardActions>
