@@ -18,7 +18,7 @@ export default function ImageSelector({handleImageChange}) {
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
-                height: 200,
+                height: 300,
                 border: '1px dotted #ccc',
                 cursor: 'pointer'
 
