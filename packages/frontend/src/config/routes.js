@@ -1,6 +1,6 @@
 import {LOGIN_PATH, REGISTER_PATH} from "./paths";
 import Home from "../views/pages/home";
-import PageNotFound from "../views/pages/page-not-found";
+import PageNotFound from "../views/pages/errors/page-not-found";
 import AuthLayout from "../views/layouts/auth-layout";
 import Login from "../views/pages/auth/login";
 import Register from "../views/pages/auth/register";

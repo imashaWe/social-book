@@ -16,9 +16,13 @@ import {useDispatch, useSelector} from "react-redux";
 import {setUserLogout} from "../../actions/user-action";
 
 export default function MainLayout({children}) {
-    const dispatch = useDispatch();
-
     const user = useSelector(state => state.user);
+    return user ? AuthenticatedAppBar(children, user) : UnauthenticatedAppBar(children);
+
+}
+
+function AuthenticatedAppBar(children, user) {
+    const dispatch = useDispatch();
 
     const fullName = nameToTitle(`${user.firstName} ${user.lastName}`);
 
@@ -103,6 +107,30 @@ export default function MainLayout({children}) {
                     </Toolbar>
                 </AppBar>
                 {renderMenu}
+            </Box>
+            <Container component="main" maxWidth="md">
+                {children}
+            </Container>
+        </>
+    );
+}
+
+function UnauthenticatedAppBar(children) {
+    return (
+        <>
+            <Box sx={{flexGrow: 1}}>
+                <AppBar position="static">
+                    <Toolbar>
+                        <Typography
+                            variant="h6"
+                            noWrap
+                            component="div"
+                            sx={{display: {xs: 'none', sm: 'block'}}}
+                        >
+                            {process.env.REACT_APP_NAME}
+                        </Typography>
+                    </Toolbar>
+                </AppBar>
             </Box>
             <Container component="main" maxWidth="md">
                 {children}
