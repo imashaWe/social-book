@@ -21,7 +21,9 @@ export default function Login() {
 
     useEffect(() => {
         if (user) {
-            navigate(state?.redirect || '/', {replace: true});
+            setTimeout(() => {
+                navigate(state?.redirect || '/', {replace: true});
+            }, 1000);
         }
     }, [user]);
 
