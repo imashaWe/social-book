@@ -3,11 +3,26 @@ import {FormContainer, PasswordElement, TextFieldElement} from "react-hook-form-
 import {FormMessageLabel, FormSubmitButton} from "../../common/form-components";
 import Logo from "../../common/logo";
 import {REGISTER_PATH} from "../../../config/paths";
+import {useDispatch, useSelector} from "react-redux";
+import {useLocation, useNavigate} from "react-router-dom";
+import {setUserLogin} from "../../../actions/user-action";
+import {useEffect} from "react";
 
 export default function Login() {
-    const handleSubmit = (data) => {
 
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const {state} = useLocation();
+    const user = useSelector(state => state.user);
+    const handleSubmit = (data) => {
+        dispatch(setUserLogin({...data, firstName: "Imasha", lastName: "Kularathne"}));
     }
+
+    useEffect(() => {
+        if (user) {
+            navigate(state?.redirect || '/', {replace: true});
+        }
+    }, [user]);
 
     return (
         <Box

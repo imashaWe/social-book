@@ -2,5 +2,5 @@ export const SET_FORM_SUBMITTING = 'SET_FORM_SUBMITTING';
 export const SET_FORM_SUCCESS = 'SET_FORM_SUCCESS';
 export const SET_FORM_FAILURE = 'SET_FORM_FAILURE';
 
-export const USER_LOGIN = 'USER_LOGIN';
-export const USER_LOGOUT = 'USER_LOGOUT';
+export const SET_USER_LOGIN = 'SET_USER_LOGIN';
+export const SET_USER_LOGOUT = 'SET_USER_LOGOUT';
