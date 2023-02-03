@@ -18,7 +18,6 @@ import {setUserLogout} from "../../actions/user-action";
 export default function MainLayout({children}) {
     const user = useSelector(state => state.user);
     return user ? AuthenticatedAppBar(children, user) : UnauthenticatedAppBar(children);
-
 }
 
 function AuthenticatedAppBar(children, user) {
