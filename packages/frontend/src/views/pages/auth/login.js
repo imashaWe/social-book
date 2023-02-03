@@ -7,6 +7,7 @@ import {useLocation, useNavigate} from "react-router-dom";
 import {setUserLogin} from "../../../actions/user-action";
 import LockPersonIcon from '@mui/icons-material/LockPerson';
 import {useEffect} from "react";
+import {ReCAPTCHA} from "react-google-recaptcha";
 
 export default function Login() {
 
@@ -24,6 +25,9 @@ export default function Login() {
         }
     }, [user]);
 
+    const handleCapchaChange = (value) => {
+        console.log("Captcha value:", value)
+    }
     return (
         <Box
             sx={{
@@ -64,6 +68,11 @@ export default function Login() {
                 />
 
                 <FormMessageLabel/>
+
+                <ReCAPTCHA
+                    sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY}
+                    onChange={handleCapchaChange}
+                />
 
                 <FormSubmitButton
                     fullWidth
