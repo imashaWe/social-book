@@ -3,11 +3,28 @@ import {FormContainer, PasswordElement, PasswordRepeatElement, TextFieldElement}
 import {FormMessageLabel, FormSubmitButton} from "../../common/form-components";
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import {LOGIN_PATH} from "../../../config/paths";
+import {useDispatch, useSelector} from "react-redux";
+import {useLocation, useNavigate} from "react-router-dom";
+import {setUserRegister} from "../../../actions/user-action";
+import {useEffect} from "react";
 
 export default function Register() {
+
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const {state} = useLocation();
+    const user = useSelector(state => state.user);
     const handleSubmit = (data) => {
-        console.log(data);
+        dispatch(setUserRegister(data));
     }
+
+    useEffect(() => {
+        if (user) {
+            setTimeout(() => {
+                navigate(state?.redirect || '/', {replace: true});
+            }, 1000);
+        }
+    }, [user]);
 
     return (
         <Box
@@ -19,7 +36,7 @@ export default function Register() {
             }}
         >
 
-            <Avatar  sx={{ width: 80, height: 80 }}>
+            <Avatar sx={{width: 80, height: 80}}>
                 <PersonAddIcon fontSize='large'/>
             </Avatar>
 
