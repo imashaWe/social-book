@@ -18,7 +18,10 @@ const addPost = async (description, imagePath, userID) => {
 
 const fetchPosts = async () => {
     try {
-        return await Post.find().populate('postedBy', 'username');
+        return await Post
+            .find()
+            .populate({path: 'postedBy', select: 'firstName lastName email'})
+            .populate({path: 'likes', select: 'firstName lastName email'});
     } catch (e) {
         throw e;
     }
