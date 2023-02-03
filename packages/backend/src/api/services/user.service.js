@@ -13,14 +13,11 @@ const createUser = async (firstName, lastName, email, password) => {
     try {
         const newUser = await user.save();
         return {
+            firstName: newUser.firstName,
+            lastName: newUser.lastName,
+            email: newUser.email,
+            isVerified: newUser.isVerified,
             token: generateToken(newUser.id, newUser.email),
-            user: {
-                firstName: newUser.firstName,
-                lastName: newUser.lastName,
-                email: newUser.email,
-                isVerified: newUser.isVerified,
-            }
-
         }
     } catch (e) {
         throw e;
@@ -40,13 +37,11 @@ const loginUser = async (email, password) => {
         }
 
         return {
+            firstName: user.firstName,
+            lastName: user.lastName,
+            email: user.email,
+            isVerified: user.isVerified,
             token: generateToken(user.id, user.email),
-            user: {
-                firstName: user.firstName,
-                lastName: user.lastName,
-                email: user.email,
-                isVerified: user.isVerified,
-            }
         }
     } catch (e) {
         throw e;
