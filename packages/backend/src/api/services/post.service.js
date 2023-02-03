@@ -16,4 +16,12 @@ const addPost = async (description, imagePath, userID) => {
     }
 }
 
-module.exports = {addPost}
+const fetchPosts = async () => {
+    try {
+        return await Post.find().populate('postedBy', 'username');
+    } catch (e) {
+        throw e;
+    }
+}
+
+module.exports = {addPost, fetchPosts}
