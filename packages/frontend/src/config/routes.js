@@ -7,6 +7,7 @@ import Register from "../views/pages/auth/register";
 import MainLayout from "../views/layouts/main-layout";
 import RequireAuth from "../views/common/require-auth";
 import EmailNotVerified from "../views/pages/errors/email-not-verified";
+import VerifyEmail from "../views/pages/verify-email";
 
 const routes = [
     {
@@ -15,9 +16,14 @@ const routes = [
         element: <RequireAuth><MainLayout><Home/></MainLayout></RequireAuth>
     },
     {
-        path:EMAIL_NOT_VERIFY_PATH,
-        name: 'Home',
+        path: EMAIL_NOT_VERIFY_PATH,
+        name: 'Email note verified',
         element: <RequireAuth><MainLayout><EmailNotVerified/></MainLayout></RequireAuth>
+    },
+    {
+        path: '/verify-email/:token',
+        name: 'Verify Email',
+        element: <RequireAuth><MainLayout><VerifyEmail/></MainLayout></RequireAuth>
     },
     {
         path: 'auth',
