@@ -17,9 +17,8 @@ mongodb.connect();
 app.use(cors());
 app.use(bodyParser.json());
 
-app.get('/', (req, res) => {
-    res.send('Hello World!');
-});
+// routes
+app.use('/auth', require('./api/routes/auth.routes'));
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
