@@ -29,15 +29,12 @@ const userSchema = new Schema({
     }
 });
 
-userSchema.pre("save", function (next) {
+userSchema.pre("save", async function (next) {
     const user = this;
-    if (!user.isModified("password")) return next();
-
-    bcrypt.hash(user.password, 10, (err, hash) => {
-        if (err) return next(err);
-        user.password = hash;
-        next();
-    });
+    if (user.isModified("password")) {
+        user.password = await bcrypt.hash(user.password, 8);
+    }
+    next();
 });
 
 module.exports = model('User', userSchema);
