@@ -21,7 +21,8 @@ const fetchPosts = async () => {
         return await Post
             .find()
             .populate({path: 'postedBy', select: 'firstName lastName email'})
-            .populate({path: 'likes', select: 'firstName lastName email'});
+            .populate({path: 'likes', select: 'firstName lastName email'})
+            .sort({createdAt: -1, likes: -1});
     } catch (e) {
         throw e;
     }
