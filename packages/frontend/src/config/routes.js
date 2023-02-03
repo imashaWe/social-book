@@ -32,7 +32,7 @@ const routes = [
     {
         path: '*',
         name: '404',
-        element: <PageNotFound/>
+        element: <MainLayout><PageNotFound/></MainLayout>
     }
 ];
 
