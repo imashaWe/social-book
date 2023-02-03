@@ -1,7 +1,7 @@
-import {Box, Grid, Typography, Link} from "@mui/material";
+import {Box, Grid, Typography, Link, Avatar} from "@mui/material";
 import {FormContainer, PasswordElement, PasswordRepeatElement, TextFieldElement} from "react-hook-form-mui";
 import {FormMessageLabel, FormSubmitButton} from "../../common/form-components";
-import Logo from "../../common/logo";
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import {LOGIN_PATH} from "../../../config/paths";
 
 export default function Register() {
@@ -18,7 +18,10 @@ export default function Register() {
                 alignItems: 'center',
             }}
         >
-            <Logo/>
+
+            <Avatar  sx={{ width: 80, height: 80 }}>
+                <PersonAddIcon fontSize='large'/>
+            </Avatar>
 
             <Typography component="h1" variant="h5">
                 Create an Account

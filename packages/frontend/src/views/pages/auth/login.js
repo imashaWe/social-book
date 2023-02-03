@@ -1,11 +1,11 @@
-import {Box, Grid, Typography, Link} from "@mui/material";
+import {Box, Grid, Typography, Link, Avatar} from "@mui/material";
 import {FormContainer, PasswordElement, TextFieldElement} from "react-hook-form-mui";
 import {FormMessageLabel, FormSubmitButton} from "../../common/form-components";
-import Logo from "../../common/logo";
 import {REGISTER_PATH} from "../../../config/paths";
 import {useDispatch, useSelector} from "react-redux";
 import {useLocation, useNavigate} from "react-router-dom";
 import {setUserLogin} from "../../../actions/user-action";
+import LockPersonIcon from '@mui/icons-material/LockPerson';
 import {useEffect} from "react";
 
 export default function Login() {
@@ -33,7 +33,9 @@ export default function Login() {
                 alignItems: 'center',
             }}
         >
-            <Logo/>
+            <Avatar  sx={{ width: 80, height: 80 }}>
+                <LockPersonIcon fontSize='large'/>
+            </Avatar>
 
             <Typography component="h1" variant="h5">
                 Sign in
