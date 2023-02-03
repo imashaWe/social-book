@@ -24,6 +24,27 @@ export const setUserLogin = (user) => {
 
 }
 
+const setUserRegister = (user) => {
+    return (dispatch) => {
+        dispatch(setFormSubmitting());
+        axios.post('auth/register', user)
+            .then((response) => {
+                if (response.data.status) {
+                    dispatch(setFormSuccess(response.data.message));
+                    dispatch({
+                        type: SET_USER_LOGIN,
+                        payload: response.data.user
+                    });
+                } else {
+                    dispatch(setFormFailure(response.data.message));
+                }
+            })
+            .catch((error) => {
+                dispatch(setFormFailure(error.message));
+            });
+    }
+}
+
 export const setUserLogout = () => {
     return {
         type: SET_USER_LOGOUT
