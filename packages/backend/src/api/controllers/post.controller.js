@@ -6,20 +6,20 @@ const addPost = (req, res) => {
 
     postService.addPost(description, image, uid)
         .then(post => {
-            res.status(200).json({message: 'Post successfully added'});
+            res.status(200).json({status: true, message: 'Post successfully added'});
         })
         .catch(err => {
-            res.status(200).json({message: err.message});
+            res.status(200).json({status: false, message: err.message});
         });
 }
 
 const fetchPosts = (req, res) => {
     postService.fetchPosts()
         .then(posts => {
-            res.status(200).json(posts);
+            res.status(200).json({status: true, data: posts});
         })
         .catch(err => {
-            res.status(200).json({message: err.message});
+            res.status(200).json({status: false, message: err.message});
         });
 }
 
@@ -29,10 +29,10 @@ const likePost = (req, res) => {
 
     postService.likePost(postID, uid)
         .then(() => {
-            res.status(200).json({message: 'Post successfully liked'});
+            res.status(200).json({status: true, message: 'Post successfully liked'});
         })
         .catch(err => {
-            res.status(200).json({message: err.message});
+            res.status(200).json({status: true, message: err.message});
         });
 }
 
@@ -41,10 +41,10 @@ const unlikePost = (req, res) => {
     const {postID} = req.params;
     postService.unlikePost(postID, uid)
         .then(() => {
-            res.status(200).json({message: 'Post successfully unliked'});
+            res.status(200).json({status: true, message: 'Post successfully unliked'});
         })
         .catch(err => {
-            res.status(200).json({message: err.message});
+            res.status(200).json({status: false, message: err.message});
         });
 }
 
