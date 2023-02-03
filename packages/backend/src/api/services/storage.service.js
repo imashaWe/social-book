@@ -11,10 +11,11 @@ const directory = 'socialbook/';
 
 const upload = async (filePath) => {
     try {
-        return await cloudinary.uploader.upload(filePath, {
+        const res = await cloudinary.uploader.upload(filePath, {
             folder: directory,
             resource_type: 'auto'
         });
+        return res.secure_url;
     } catch (error) {
         throw error;
     }
