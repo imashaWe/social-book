@@ -37,7 +37,7 @@ export default function Login() {
                 alignItems: 'center',
             }}
         >
-            <Avatar  sx={{ width: 80, height: 80 }}>
+            <Avatar sx={{width: 80, height: 80}}>
                 <LockPersonIcon fontSize='large'/>
             </Avatar>
 
