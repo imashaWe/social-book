@@ -9,7 +9,7 @@ import InputBase from '@mui/material/InputBase';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
-import {Container} from "@mui/material";
+import {Container, Divider} from "@mui/material";
 import nameToTitle from "../../helpers/name-to-title";
 import ProfileAvatar from "../common/profile-avatar";
 import {useDispatch, useSelector} from "react-redux";
@@ -57,7 +57,9 @@ function AuthenticatedAppBar(children, user) {
             onClose={handleMenuClose}
         >
             <MenuItem>{fullName}</MenuItem>
-            <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+            <Typography variant='body2' sx={{marginX: 2, marginY: 1}}>{user.email}</Typography>
+            <Divider/>
+            <MenuItem onClick={handleMenuClose}>My Account</MenuItem>
             <MenuItem onClick={handleLogout}>Logout</MenuItem>
         </Menu>
     );
