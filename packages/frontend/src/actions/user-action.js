@@ -24,7 +24,7 @@ export const setUserLogin = (user) => {
 
 }
 
-const setUserRegister = (user) => {
+export const setUserRegister = (user) => {
     return (dispatch) => {
         dispatch(setFormSubmitting());
         axios.post('auth/register', user)
