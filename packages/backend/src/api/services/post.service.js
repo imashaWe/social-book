@@ -27,4 +27,20 @@ const fetchPosts = async () => {
     }
 }
 
-module.exports = {addPost, fetchPosts}
+const likePost = async (postID, userID) => {
+    try {
+        return Post.updateOne({_id: postID}, {$addToSet: {likes: userID}});
+    } catch (e) {
+        throw e;
+    }
+}
+
+const unlikePost = async (postID, userID) => {
+    try {
+        return Post.updateOne({_id: postID}, {$pull: {likes: userID}});
+    } catch (e) {
+        throw e;
+    }
+}
+
+module.exports = {addPost, fetchPosts, likePost, unlikePost}
