@@ -25,6 +25,7 @@ export default function Post({post, handleEdit, handleDelete}) {
     const fullName = nameToTitle(`${post.postedBy.firstName} ${post.postedBy.lastName}`);
     const {uid} = useSelector(state => state.user);
     const isLiked = post.likes.findIndex(like => like._id === uid) !== -1;
+    const isAdmin = post.postedBy._id === uid;
     const likeCount = post.likes.length;
 
     const [anchorEl, setAnchorEl] = useState(null);
@@ -90,7 +91,7 @@ export default function Post({post, handleEdit, handleDelete}) {
                     </Grid>
                 </CardActions>
             </Card>
-            <PostOptionMenu anchorEl={anchorEl} isAdmin={true} handleClose={handleOptionMenuClose}/>
+            <PostOptionMenu anchorEl={anchorEl} isAdmin={isAdmin} handleClose={handleOptionMenuClose}/>
         </>
     );
 }
