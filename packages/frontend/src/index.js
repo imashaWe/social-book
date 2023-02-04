@@ -9,6 +9,7 @@ import store from "./store/store";
 import {ThemeProvider} from "@mui/material";
 import {theme} from "./config/theme";
 import './config/axios';
+import {ToastContainer} from "react-toastify";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -17,6 +18,7 @@ root.render(
             <BrowserRouter>
                 <ThemeProvider theme={theme}>
                     <App/>
+                    <ToastContainer/>
                 </ThemeProvider>
             </BrowserRouter>
         </Provider>

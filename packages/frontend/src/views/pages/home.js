@@ -1,17 +1,21 @@
 import {Box, Fab, Paper, Stack} from "@mui/material";
 import Post from "../components/post";
 import AddIcon from '@mui/icons-material/Add';
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import CreatePostDialog from "../components/create-post-dialog";
 import PostSkeleton from "../components/post-skeleton";
 import {useDispatch, useSelector} from "react-redux";
 import {addPost, fetchPosts} from "../../actions/post-action";
+import {toast} from "react-toastify";
 
 export default function Home() {
     const [open, setOpen] = useState(false);
     const appState = useSelector(state => state.appState);
     const posts = useSelector(state => state.posts);
     const dispatch = useDispatch();
+    const formState = useSelector(state => state.formState);
+    const toastId = useRef(null);
+
 
     const handleClose = () => {
         setOpen(false);
@@ -27,6 +31,29 @@ export default function Home() {
     useEffect(() => {
         dispatch(fetchPosts());
     }, []);
+
+    useEffect(() => {
+        if (formState.isSubmitting) {
+            toastId.current = toast.loading("Posting...");
+        }
+        if (formState.isSuccess) {
+            toast.update(toastId.current, {
+                render: "Posted!",
+                type: "success",
+                isLoading: false,
+                autoClose: 2000
+            });
+            setOpen(false);
+        }
+        if (formState.isFailure) {
+            toast.update(toastId.current, {
+                render: "Something went wrong",
+                type: "error",
+                isLoading: false,
+                autoClose: 2000
+            });
+        }
+    }, [formState]);
 
     return (
         <Paper elevation={0} variant="outlined" square
