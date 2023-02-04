@@ -1,4 +1,4 @@
-import {SET_FORM_FAILURE, SET_FORM_SUBMITTING, SET_FORM_SUCCESS} from "../actions/types";
+import {SET_FORM_FAILURE, SET_FORM_RESET, SET_FORM_SUBMITTING, SET_FORM_SUCCESS} from "../actions/types";
 
 const initialState = {
     isSubmitting: false,
@@ -31,7 +31,7 @@ export default function formReducer(state = initialState, action) {
                 isFailure: true,
                 message: action.payload.message
             }
-        case 'SET_FORM_RESET':
+        case SET_FORM_RESET:
             return initialState;
         default:
             return state;
