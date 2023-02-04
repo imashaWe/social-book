@@ -16,7 +16,16 @@ const login = (req, res) => {
         .catch((e) => res.status(200).json({status: false, message: e.message}));
 }
 
+const verifyEmail = (req, res) => {
+    const {token} = req.params;
+    userServices
+        .verifyEmail(token)
+        .then((data) => res.status(200).json({status: true, message: 'Email successfully verified', user: data}))
+        .catch((e) => res.status(200).json({status: false, message: e.message}));
+}
+
 module.exports = {
     register,
-    login
+    login,
+    verifyEmail
 }
