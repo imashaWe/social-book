@@ -1,16 +1,17 @@
 import axios from "axios";
 import {SET_POSTS} from "./types";
-import {setAppStateFailure} from "./app-state-action";
+import {setAppStateFailure, setAppStateSuccess} from "./app-state-action";
 
 export const fetchPosts = () => {
     return (dispatch) => {
         axios.get('post')
             .then((response) => {
-                if (response.status) {
+                if (response.data.status) {
                     dispatch({
                         type: SET_POSTS,
-                        payload: response.data
+                        payload: response.data.data
                     });
+                    dispatch(setAppStateSuccess());
                 } else {
                     dispatch(setAppStateFailure(response.message));
                 }
