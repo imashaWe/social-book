@@ -2,7 +2,7 @@ import {Box} from "@mui/material";
 import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
 import {useRef, useState} from "react";
 
-export default function ImageSelector({handleImageChange}) {
+export default function ImageSelector({handleImageChange, defaultImage = null}) {
     const inputRef = useRef();
     const [image, setImage] = useState(null);
     const onImageSelect = (event) => {
@@ -31,8 +31,11 @@ export default function ImageSelector({handleImageChange}) {
                     <img src={URL.createObjectURL(image)}
                          alt='preview'
                          style={{maxWidth: '100%', maxHeight: '100%'}}/>
-                    :
-                    <AddPhotoAlternateIcon fontSize='large'/>
+                    : defaultImage ?
+                        <img src={defaultImage}
+                             alt='preview'
+                             style={{maxWidth: '100%', maxHeight: '100%'}}/> :
+                        <AddPhotoAlternateIcon fontSize='large'/>
             }
         </Box>
     );
