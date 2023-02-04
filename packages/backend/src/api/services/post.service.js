@@ -30,7 +30,10 @@ const fetchPosts = async () => {
 
 const likePost = async (postID, userID) => {
     try {
-        return await Post.findByIdAndUpdate(postID, {$addToSet: {likes: userID}}, {new: true});
+        return await Post
+            .findByIdAndUpdate(postID, {$addToSet: {likes: userID}}, {new: true})
+            .populate({path: 'postedBy', select: 'firstName lastName email'})
+            .populate({path: 'likes', select: 'firstName lastName email'});
     } catch (e) {
         throw e;
     }
@@ -38,7 +41,10 @@ const likePost = async (postID, userID) => {
 
 const unlikePost = async (postID, userID) => {
     try {
-        return await Post.findByIdAndUpdate(postID, {$pull: {likes: userID}}, {new: true});
+        return await Post
+            .findByIdAndUpdate(postID, {$pull: {likes: userID}}, {new: true})
+            .populate({path: 'postedBy', select: 'firstName lastName email'})
+            .populate({path: 'likes', select: 'firstName lastName email'});
     } catch (e) {
         throw e;
     }
