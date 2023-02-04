@@ -16,7 +16,6 @@ export default function Home() {
     const formState = useSelector(state => state.formState);
     const toastId = useRef(null);
 
-
     const handleClose = () => {
         setOpen(false);
     }
