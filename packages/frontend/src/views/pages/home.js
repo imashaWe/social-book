@@ -1,20 +1,17 @@
 import {Box, Fab, Paper, Stack} from "@mui/material";
 import Post from "../components/post";
 import AddIcon from '@mui/icons-material/Add';
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import CreatePostDialog from "../components/create-post-dialog";
 import PostSkeleton from "../components/post-skeleton";
+import {useDispatch, useSelector} from "react-redux";
+import {fetchPosts} from "../../actions/post-action";
 
-const _SAMPLE_POST = {
-    creator: {
-        fistName: 'imasha',
-        lastName: 'weerakoon'
-    },
-    image: 'https://placeimg.com/640/480/any',
-    description: 'Sample Post'
-}
 export default function Home() {
     const [open, setOpen] = useState(false);
+    const appState = useSelector(state => state.appState);
+    const posts = useSelector(state => state.posts);
+    const dispatch = useDispatch();
 
     const handleClose = () => {
         setOpen(false);
@@ -27,9 +24,10 @@ export default function Home() {
 
     }
 
-    const postListing = Array.from(new Array(10)).map((post, index) => <Post key={index} post={_SAMPLE_POST}/>);
-    const loadingSkeleton = Array.from(new Array(10)).map((post, index) => <PostSkeleton key={index}/>);
-
+    useEffect(() => {
+        dispatch(fetchPosts());
+    }, [0]);
+    
     return (
         <Paper elevation={0} variant="outlined" square
                sx={{
@@ -42,7 +40,7 @@ export default function Home() {
                }}>
             <Box sx={{width: .8}}>
                 <Stack spacing={3}>
-                    {postListing}
+                    <ListingView appState={appState} posts={posts}/>
                 </Stack>
             </Box>
             <Fab variant="extended" color="primary" aria-label="add"
@@ -61,4 +59,15 @@ export default function Home() {
             <CreatePostDialog handleClose={handleClose} handleSubmittingPost={handleSubmittingPost} open={open}/>
         </Paper>
     );
+}
+
+function ListingView(appState, posts) {
+    const {isFetching, isFailure, isSuccess} = appState;
+    if (isFetching) {
+        return Array.from(new Array(10)).map((post, index) => <PostSkeleton key={index}/>);
+    } else if (isFailure) {
+        return <div>Something went wrong</div>
+    } else if (isSuccess) {
+        return posts.map((post, index) => <Post key={index} post={post}/>);
+    }
 }
