@@ -28,8 +28,8 @@ const likePost = (req, res) => {
     const {postID} = req.params;
 
     postService.likePost(postID, uid)
-        .then(() => {
-            res.status(200).json({status: true, message: 'Post successfully liked'});
+        .then((updatedPost) => {
+            res.status(200).json({status: true, message: 'Post successfully liked', data: updatedPost});
         })
         .catch(err => {
             res.status(200).json({status: true, message: err.message});
@@ -40,8 +40,8 @@ const unlikePost = (req, res) => {
     const {uid} = req.auth;
     const {postID} = req.params;
     postService.unlikePost(postID, uid)
-        .then(() => {
-            res.status(200).json({status: true, message: 'Post successfully unliked'});
+        .then((updatedPost) => {
+            res.status(200).json({status: true, message: 'Post successfully unliked', data: updatedPost});
         })
         .catch(err => {
             res.status(200).json({status: false, message: err.message});

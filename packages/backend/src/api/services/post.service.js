@@ -30,7 +30,7 @@ const fetchPosts = async () => {
 
 const likePost = async (postID, userID) => {
     try {
-        return Post.updateOne({_id: postID}, {$addToSet: {likes: userID}});
+        return await Post.findByIdAndUpdate(postID, {$addToSet: {likes: userID}}, {new: true});
     } catch (e) {
         throw e;
     }
@@ -38,7 +38,7 @@ const likePost = async (postID, userID) => {
 
 const unlikePost = async (postID, userID) => {
     try {
-        return Post.updateOne({_id: postID}, {$pull: {likes: userID}});
+        return await Post.findByIdAndUpdate(postID, {$pull: {likes: userID}}, {new: true});
     } catch (e) {
         throw e;
     }
