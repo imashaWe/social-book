@@ -21,7 +21,7 @@ export default function Post({post}) {
     const dispatch = useDispatch();
     const fullName = nameToTitle(`${post.postedBy.firstName} ${post.postedBy.lastName}`);
     const {uid} = useSelector(state => state.user);
-    const isLiked = post.likes.findIndex(like=>like._id === uid) !== -1;
+    const isLiked = post.likes.findIndex(like => like._id === uid) !== -1;
     const likeCount = post.likes.length;
     const handleLike = () => {
         if (isLiked) {
@@ -32,7 +32,7 @@ export default function Post({post}) {
     }
 
     return (
-        <Card>
+        <Card elevation={5}>
             <CardHeader
                 avatar={
                     <ProfileAvatar user={post.postedBy}/>
@@ -47,11 +47,13 @@ export default function Post({post}) {
                 image={post.imageURL}
                 alt="Post Image"
             />
+
             <CardContent>
                 <Typography variant="body2" color="text.secondary">
-                    {post.description}
+                    {post.description !== "undefined" ? post.description : "   "}
                 </Typography>
             </CardContent>
+
             <CardActions>
                 <Grid container justifyContent="space-between">
                     <Grid item>
