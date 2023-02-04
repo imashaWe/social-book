@@ -7,6 +7,7 @@ import PostSkeleton from "../components/post-skeleton";
 import {useDispatch, useSelector} from "react-redux";
 import {addPost, fetchPosts} from "../../actions/post-action";
 import {toast} from "react-toastify";
+import ErrorView from "../common/error-view";
 
 export default function Home() {
     const [open, setOpen] = useState(false);
@@ -88,11 +89,11 @@ export default function Home() {
 }
 
 function ListingView({appState, posts}) {
-    const {isFetching, isFailure, isSuccess} = appState;
+    const {isFetching, isFailure, isSuccess, message} = appState;
     if (isFetching) {
         return Array.from(new Array(10)).map((post, index) => <PostSkeleton key={index}/>);
     } else if (isFailure) {
-        return <div>Something went wrong</div>
+        return <ErrorView message={message}/>
     } else if (isSuccess) {
         return posts.map((post, index) => <Post key={index} post={post}/>);
     }
