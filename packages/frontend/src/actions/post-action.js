@@ -1,6 +1,7 @@
 import axios from "axios";
 import {SET_POSTS, UPDATE_POST} from "./types";
 import {setAppStateFailure, setAppStateSuccess} from "./app-state-action";
+import {setFormFailure, setFormSubmitting, setFormSuccess} from "./form-actions";
 
 export const fetchPosts = () => {
     return (dispatch) => {
@@ -22,7 +23,21 @@ export const fetchPosts = () => {
     }
 };
 
-export const addPost = (description, image) => {
+export const addPost = (image, description) => {
+    const formData = new FormData();
+    formData.append('description', description);
+    formData.append('image', image);
+    return (dispatch) => {
+        dispatch(setFormSubmitting());
+        axios.post('post', formData)
+            .then((response) => {
+                if (response.data.status) {
+                    dispatch(setFormSuccess());
+                }
+            }).catch((error) => {
+            dispatch(setFormFailure(error.message));
+        });
+    }
 };
 
 export const likePost = (postID) => {
@@ -32,7 +47,7 @@ export const likePost = (postID) => {
                 if (response.data.status) {
                     dispatch(updatePost(response.data.data));
                 }
-            }).then((error) => {
+            }).catch((error) => {
             console.log(error);
         });
     }
@@ -45,7 +60,7 @@ export const unlikePost = (postID) => {
                 if (response.data.status) {
                     dispatch(updatePost(response.data.data));
                 }
-            }).then((error) => {
+            }).catch((error) => {
             console.log(error);
         });
     }
