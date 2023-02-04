@@ -31,6 +31,8 @@ export default function formReducer(state = initialState, action) {
                 isFailure: true,
                 message: action.payload.message
             }
+        case 'SET_FORM_RESET':
+            return initialState;
         default:
             return state;
     }

@@ -1,4 +1,4 @@
-import {SET_FORM_FAILURE, SET_FORM_SUBMITTING, SET_FORM_SUCCESS} from "./types";
+import {SET_FORM_FAILURE, SET_FORM_RESET, SET_FORM_SUBMITTING, SET_FORM_SUCCESS} from "./types";
 
 export const setFormSubmitting = () => {
     return {
@@ -21,5 +21,11 @@ export const setFormFailure = (message) => {
         payload: {
             message: message
         }
+    }
+}
+
+export const setFormReset = () => {
+    return {
+        type: SET_FORM_RESET
     }
 }
