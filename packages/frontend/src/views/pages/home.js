@@ -26,7 +26,7 @@ export default function Home() {
 
     useEffect(() => {
         dispatch(fetchPosts());
-    }, [0]);
+    }, []);
 
     return (
         <Paper elevation={0} variant="outlined" square
