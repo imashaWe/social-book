@@ -5,7 +5,7 @@ import {useEffect, useState} from "react";
 import CreatePostDialog from "../components/create-post-dialog";
 import PostSkeleton from "../components/post-skeleton";
 import {useDispatch, useSelector} from "react-redux";
-import {fetchPosts} from "../../actions/post-action";
+import {addPost, fetchPosts} from "../../actions/post-action";
 
 export default function Home() {
     const [open, setOpen] = useState(false);
@@ -21,7 +21,7 @@ export default function Home() {
     }
 
     const handleSubmittingPost = (imageFile, description) => {
-
+        dispatch(addPost(imageFile, description));
     }
 
     useEffect(() => {
