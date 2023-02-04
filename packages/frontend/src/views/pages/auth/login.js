@@ -6,8 +6,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {useLocation, useNavigate} from "react-router-dom";
 import {setUserLogin} from "../../../actions/user-action";
 import LockPersonIcon from '@mui/icons-material/LockPerson';
-import {useEffect} from "react";
-import {ReCAPTCHA} from "react-google-recaptcha";
+import {useEffect, useState} from "react";
+import ReCAPTCHA from "react-google-recaptcha";
 
 export default function Login() {
 
@@ -15,6 +15,8 @@ export default function Login() {
     const navigate = useNavigate();
     const {state} = useLocation();
     const user = useSelector(state => state.user);
+
+    const [captchaValue, setCaptchaValue] = useState(null);
     const handleSubmit = (data) => {
         dispatch(setUserLogin({...data, firstName: "Imasha", lastName: "Kularathne"}));
     }
@@ -28,8 +30,9 @@ export default function Login() {
     }, [user]);
 
     const handleCapchaChange = (value) => {
-        console.log("Captcha value:", value)
+        setCaptchaValue(value);
     }
+
     return (
         <Box
             sx={{
@@ -71,12 +74,15 @@ export default function Login() {
 
                 <FormMessageLabel/>
 
-                <ReCAPTCHA
-                    sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY}
-                    onChange={handleCapchaChange}
-                />
+                <Box sx={{my: 1}}>
+                    <ReCAPTCHA
+                        sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY}
+                        onChange={handleCapchaChange}
+                    />
+                </Box>
 
                 <FormSubmitButton
+                    disabled={!captchaValue}
                     fullWidth
                     variant="contained"
                     sx={{mt: 3, mb: 2}}
