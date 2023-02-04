@@ -1,5 +1,5 @@
 import axios from "axios";
-import {SET_POSTS, UPDATE_POSTS} from "./types";
+import {SET_POSTS, UPDATE_POST} from "./types";
 import {setAppStateFailure, setAppStateSuccess} from "./app-state-action";
 
 export const fetchPosts = () => {
@@ -31,9 +31,9 @@ export const likePost = () => {
 export const unlikePost = () => {
 };
 
-const updatePosts = (posts) => {
+const updatePost = (post) => {
     return {
-        type: UPDATE_POSTS,
-        payload: posts
+        type: UPDATE_POST,
+        payload: post
     }
 }
