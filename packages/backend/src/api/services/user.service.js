@@ -13,6 +13,7 @@ const createUser = async (firstName, lastName, email, password) => {
     try {
         const newUser = await user.save();
         return {
+            uid: user.id,
             firstName: newUser.firstName,
             lastName: newUser.lastName,
             email: newUser.email,
@@ -37,6 +38,7 @@ const loginUser = async (email, password) => {
         }
 
         return {
+            uid: user.id,
             firstName: user.firstName,
             lastName: user.lastName,
             email: user.email,
