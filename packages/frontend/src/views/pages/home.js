@@ -27,7 +27,7 @@ export default function Home() {
     useEffect(() => {
         dispatch(fetchPosts());
     }, [0]);
-    
+
     return (
         <Paper elevation={0} variant="outlined" square
                sx={{
@@ -61,7 +61,7 @@ export default function Home() {
     );
 }
 
-function ListingView(appState, posts) {
+function ListingView({appState, posts}) {
     const {isFetching, isFailure, isSuccess} = appState;
     if (isFetching) {
         return Array.from(new Array(10)).map((post, index) => <PostSkeleton key={index}/>);
