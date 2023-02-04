@@ -58,7 +58,7 @@ export default function PostOptionMenu({anchorEl, isAdmin, handleClose, handleFu
             Fullscreen
         </MenuItem>
 
-        <Divider sx={{my: 0.5}}/>
+        {isAdmin && <Divider sx={{my: 0.5}}/>}
 
         {isAdmin && <MenuItem onClick={() => {
             handleClose();
