@@ -5,7 +5,7 @@ export const setAppStateFetching = () => {
         type: SET_APP_STATE_FETCHING
     }
 }
-export const setAppStateSuccess = (message) => {
+export const setAppStateSuccess = (message = null) => {
     return {
         type: SET_APP_STATE_SUCCESS,
         payload: {
