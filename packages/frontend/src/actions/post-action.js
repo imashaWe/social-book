@@ -25,10 +25,30 @@ export const fetchPosts = () => {
 export const addPost = (description, image) => {
 };
 
-export const likePost = () => {
+export const likePost = (postID) => {
+    return (dispatch) => {
+        axios.post(`post/${postID}/like`)
+            .then((response) => {
+                if (response.data.status) {
+                    dispatch(updatePost(response.data.data));
+                }
+            }).then((error) => {
+            console.log(error);
+        });
+    }
 };
 
-export const unlikePost = () => {
+export const unlikePost = (postID) => {
+    return (dispatch) => {
+        axios.post(`post/${postID}/unlike`)
+            .then((response) => {
+                if (response.data.status) {
+                    dispatch(updatePost(response.data.data));
+                }
+            }).then((error) => {
+            console.log(error);
+        });
+    }
 };
 
 const updatePost = (post) => {
