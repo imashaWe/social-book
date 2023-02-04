@@ -6,7 +6,8 @@ import {LOGIN_PATH} from "../../../config/paths";
 import {useDispatch, useSelector} from "react-redux";
 import {useLocation, useNavigate} from "react-router-dom";
 import {setUserRegister} from "../../../actions/user-action";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
+import ReCAPTCHA from "react-google-recaptcha";
 
 export default function Register() {
 
@@ -14,6 +15,7 @@ export default function Register() {
     const navigate = useNavigate();
     const {state} = useLocation();
     const user = useSelector(state => state.user);
+    const [captchaValue, setCaptchaValue] = useState(null);
     const handleSubmit = (data) => {
         dispatch(setUserRegister(data));
     }
@@ -25,6 +27,10 @@ export default function Register() {
             }, 1000);
         }
     }, [user]);
+
+    const handleCapchaChange = (value) => {
+        setCaptchaValue(value);
+    }
 
     return (
         <Box
@@ -103,7 +109,15 @@ export default function Register() {
 
                 <FormMessageLabel/>
 
+                <Box sx={{my: 1}}>
+                    <ReCAPTCHA
+                        sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY}
+                        onChange={handleCapchaChange}
+                    />
+                </Box>
+
                 <FormSubmitButton
+                    disabled={!captchaValue}
                     fullWidth
                     variant="contained"
                     sx={{mt: 3, mb: 2}}
