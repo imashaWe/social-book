@@ -3,11 +3,13 @@ import {stringToColor} from "../../helpers/string-to-color";
 import nameToTitle from "../../helpers/name-to-title";
 
 export default function ProfileAvatar({user}) {
-    const fullName = nameToTitle(`${user.fistName} ${user.lastName}`);
+    const fullName = nameToTitle(`${user.firstName} ${user.lastName}`);
     return (
         <Avatar
-            alt={fullName}
-            src="/static/images/avatar/2.jpg"
-            sx={{bgcolor: stringToColor(fullName)}}/>
+            sx={{bgcolor: stringToColor(fullName)}}>
+            {
+                `${user.firstName.charAt(0)}${user.lastName.charAt(0)}`.toUpperCase()
+            }
+        </Avatar>
     );
 }
