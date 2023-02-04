@@ -1,10 +1,11 @@
 import axios from "axios";
 import {SET_POSTS, UPDATE_POST} from "./types";
-import {setAppStateFailure, setAppStateSuccess} from "./app-state-action";
+import {setAppStateFailure, setAppStateFetching, setAppStateSuccess} from "./app-state-action";
 import {setFormFailure, setFormSubmitting, setFormSuccess} from "./form-actions";
 
 export const fetchPosts = () => {
     return (dispatch) => {
+        dispatch(setAppStateFetching())
         axios.get('post')
             .then((response) => {
                 if (response.data.status) {
