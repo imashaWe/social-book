@@ -12,6 +12,7 @@ import FavoriteIcon from '@mui/icons-material/FavoriteOutlined';
 import ShareIcon from '@mui/icons-material/Share';
 import ProfileAvatar from "../common/profile-avatar";
 import nameToTitle from "../../helpers/name-to-title";
+import Moment from "react-moment";
 
 export default function Post({post}) {
     const fullName = nameToTitle(`${post.postedBy.firstName} ${post.postedBy.lastName}`);
@@ -23,7 +24,7 @@ export default function Post({post}) {
                 }
 
                 title={fullName}
-                subheader="September 14, 2016"
+                subheader={<Moment fromNow>{post.postedAt}</Moment>}
             />
             <CardMedia
                 component="img"
