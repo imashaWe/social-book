@@ -14,12 +14,12 @@ import ProfileAvatar from "../common/profile-avatar";
 import nameToTitle from "../../helpers/name-to-title";
 
 export default function Post({post}) {
-    const fullName = nameToTitle(`${post.creator.fistName} ${post.creator.lastName}`);
+    const fullName = nameToTitle(`${post.postedBy.firstName} ${post.postedBy.lastName}`);
     return (
         <Card>
             <CardHeader
                 avatar={
-                    <ProfileAvatar user={post.creator}/>
+                    <ProfileAvatar user={post.postedBy}/>
                 }
 
                 title={fullName}
@@ -28,7 +28,7 @@ export default function Post({post}) {
             <CardMedia
                 component="img"
                 height="400"
-                image={post.image}
+                image={post.imageURL}
                 alt="Post Image"
             />
             <CardContent>
