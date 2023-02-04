@@ -15,7 +15,6 @@ export default function Login() {
     const navigate = useNavigate();
     const {state} = useLocation();
     const user = useSelector(state => state.user);
-
     const [captchaValue, setCaptchaValue] = useState(null);
     const handleSubmit = (data) => {
         dispatch(setUserLogin({...data, firstName: "Imasha", lastName: "Kularathne"}));
