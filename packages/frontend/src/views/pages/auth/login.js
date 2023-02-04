@@ -17,7 +17,7 @@ export default function Login() {
     const user = useSelector(state => state.user);
     const [captchaValue, setCaptchaValue] = useState(null);
     const handleSubmit = (data) => {
-        dispatch(setUserLogin({...data, firstName: "Imasha", lastName: "Kularathne"}));
+        dispatch(setUserLogin(data));
     }
 
     useEffect(() => {
