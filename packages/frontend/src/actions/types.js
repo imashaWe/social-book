@@ -11,7 +11,4 @@ export const SET_APP_STATE_SUCCESS = 'SET_APP_STATE_SUCCESS';
 export const SET_APP_STATE_FAILURE = 'SET_APP_STATE_FAILURE';
 export const SET_APP_STATE_DEFAULT = 'SET_APP_STATE_DEFAULT';
 
-export const FETCH_POSTS = 'FETCH_POSTS';
-export const ADD_POST = 'ADD_POST';
-export const LIKE_POST = 'LIKE_POST';
-export const UNLIKE_POST = 'UNLIKE_POST';
+export const SET_POSTS= 'SET_POSTS';
