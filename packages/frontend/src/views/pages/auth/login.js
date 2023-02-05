@@ -7,8 +7,7 @@ import {useLocation, useNavigate} from "react-router-dom";
 import {setUserLogin} from "../../../actions/user-action";
 import {useEffect, useState} from "react";
 import ReCAPTCHA from "react-google-recaptcha";
-import logo from '../../../assets/images/logo.png';
-
+import LockPersonIcon from '@mui/icons-material/LockPerson';
 export default function Login() {
 
     const dispatch = useDispatch();
@@ -33,13 +32,13 @@ export default function Login() {
     }
 
     return (
-        <Card elevation={10} sx={{width: .7}}>
+        <Card elevation={10}>
             <CardContent sx={{
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
             }}>
-                <img src={logo} alt="logo" style={{width: 80, height: 80}}/>
+               <LockPersonIcon sx={{fontSize:80}}/>
 
                 <Typography component="h1" variant="h5">
                     Sign in
