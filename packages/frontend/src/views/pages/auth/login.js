@@ -51,8 +51,8 @@ export default function Login() {
                         required
                         fullWidth
                         id="email"
-                        label="Email Address"
-                        name="email"
+                        label="Username or Email Address"
+                        name="usernameOrEmail"
                         autoComplete="email"
                         margin="normal"
                         autoFocus
