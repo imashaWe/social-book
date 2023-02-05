@@ -70,7 +70,9 @@ export default function Home() {
                     <ListingView appState={appState} posts={posts}/>
                 </Stack>
             </Box>
-            <Fab variant="extended" color="primary" aria-label="add"
+            <Fab variant="extended"
+                 color="secondary"
+                 aria-label="add"
                  sx={{
                      margin: 0,
                      top: 'auto',

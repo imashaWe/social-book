@@ -33,7 +33,7 @@ export default function CreatePostDialog({open, handleClose, handleSubmittingPos
             </DialogContent>
             <DialogActions>
                 <Button onClick={handleClose}>Cancel</Button>
-                <Button onClick={handlePost} variant='contained'>POST</Button>
+                <Button onClick={handlePost} variant='contained' color="secondary">POST</Button>
             </DialogActions>
         </Dialog>
     );

@@ -8,6 +8,7 @@ export function FormSubmitButton(props) {
     return (
         <LoadingButton
             type="submit"
+            color="secondary"
             loading={isSubmitting}
             {...props}
         >
