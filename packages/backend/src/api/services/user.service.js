@@ -4,11 +4,12 @@ const emailService = require('./email.service');
 const jwt = require("jsonwebtoken");
 const bcrypt = require('bcrypt');
 
-const createUser = async (firstName, lastName, email, password) => {
+const createUser = async (firstName, lastName, username, email, password) => {
     const user = new User({
         firstName,
         lastName,
         email,
+        username,
         password,
     });
 
@@ -17,6 +18,7 @@ const createUser = async (firstName, lastName, email, password) => {
         await sendVerificationEmail(email, firstName);
         return {
             uid: user.id,
+            username: user.username,
             firstName: newUser.firstName,
             lastName: newUser.lastName,
             email: newUser.email,
@@ -28,9 +30,15 @@ const createUser = async (firstName, lastName, email, password) => {
     }
 }
 
-const loginUser = async (email, password) => {
+const loginUser = async (usernameOrEmail, password) => {
     try {
-        const user = await User.findOne({email: email});
+        let user;
+
+        if (usernameOrEmail.includes('@')) {
+            user = await User.findOne({email: usernameOrEmail});
+        } else {
+            user = await User.findOne({username: usernameOrEmail});
+        }
 
         if (!user) {
             throw new Error('User not found');
@@ -78,6 +86,7 @@ const verifyEmail = async (verificationCodeId) => {
     const user = await User.findOneAndUpdate({email: response.email}, {isVerified: true}, {new: true});
     return {
         uid: user.id,
+        username: user.username,
         firstName: user.firstName,
         lastName: user.lastName,
         email: user.email,
