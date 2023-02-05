@@ -12,8 +12,8 @@ const transporter = nodemailer.createTransport({
     }
 });
 
-const sendVerificationEmail = async (email, verifyLink) => {
-    const html = ejs.render(verifyEmailTemplate, {verifyLink: verifyLink});
+const sendVerificationEmail = async (email, name, verifyLink) => {
+    const html = ejs.render(verifyEmailTemplate, {name: name, verifyLink: verifyLink});
     try {
         return await sendHTMLEmail(process.env.MAILGUN_FROM_EMAIL, email, 'Verify Your Email', html);
     } catch (err) {
