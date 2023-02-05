@@ -15,6 +15,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {likePost, unlikePost} from "../../actions/post-action";
 import {useState} from "react";
 import PostOptionMenu from "./post-option-menu";
+import ImageViewer from "react-simple-image-viewer";
 
 export default function PostCard({post, handleEdit, handleDelete}) {
     const dispatch = useDispatch();
@@ -25,6 +26,7 @@ export default function PostCard({post, handleEdit, handleDelete}) {
     const likeCount = post.likes.length;
 
     const [anchorEl, setAnchorEl] = useState(null);
+    const [viewImage, setViewImage] = useState(null);
     const handleOptionMenuOpen = (event) => {
         setAnchorEl(event.currentTarget);
     };
@@ -62,6 +64,8 @@ export default function PostCard({post, handleEdit, handleDelete}) {
                     height="400"
                     image={post.imageURL}
                     alt="PostCard Image"
+                    sx={{cursor: "pointer"}}
+                    onClick={() => setViewImage(post.imageURL)}
                 />
 
                 <CardContent>
@@ -99,6 +103,20 @@ export default function PostCard({post, handleEdit, handleDelete}) {
                 </CardActions>
             </Card>
             <PostOptionMenu anchorEl={anchorEl} isAdmin={isAdmin} handleClose={handleOptionMenuClose}/>
+            {viewImage
+                &&
+                <ImageViewer
+                    src={[viewImage]}
+                    handleClose={() => setViewImage(null)}
+                    currentIndex={0}
+                    onClose={() => setViewImage(null)}
+                    disableScroll={false}
+                    backgroundStyle={{
+                        backgroundColor: "rgba(0,0,0,0.9)"
+                    }}
+                    closeOnClickOutside={true}
+                />
+            }
         </>
     );
 }
