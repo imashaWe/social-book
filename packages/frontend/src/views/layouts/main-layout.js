@@ -99,9 +99,7 @@ function AuthenticatedAppBar(children, user) {
                                 alignItems="flex-start"
                             >
                                 <Typography variant='h6'>{fullName}</Typography>
-                                <Typography
-                                    variant='body1'
-                                    sx={{fontStyle: 'oblique'}}>
+                                <Typography variant='body1'>
                                     {user.username}
                                 </Typography>
                             </Stack>
