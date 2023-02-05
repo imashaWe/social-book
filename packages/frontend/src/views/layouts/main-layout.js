@@ -15,9 +15,13 @@ import ProfileAvatar from "../common/profile-avatar";
 import {useDispatch, useSelector} from "react-redux";
 import {setUserLogout} from "../../actions/user-action";
 
-export default function MainLayout({children}) {
+export default function MainLayout({children, hideUserMenu = false}) {
     const user = useSelector(state => state.user);
-    return user ? AuthenticatedAppBar(children, user) : UnauthenticatedAppBar(children);
+    if (hideUserMenu) {
+        return UnauthenticatedAppBar(children);
+    } else {
+        return user ? AuthenticatedAppBar(children, user) : UnauthenticatedAppBar(children);
+    }
 }
 
 function AuthenticatedAppBar(children, user) {
