@@ -50,3 +50,24 @@ export const setUserLogout = () => {
         type: SET_USER_LOGOUT
     };
 }
+
+export const setUserVerifyEmail = (token) => {
+    return (dispatch) => {
+        dispatch(setFormSubmitting());
+        axios.post(`auth/verify-email/${token}`, )
+            .then((response) => {
+                if (response.data.status) {
+                    dispatch(setFormSuccess(response.data.message));
+                    dispatch({
+                        type: SET_USER_LOGIN,
+                        payload: response.data.user
+                    });
+                } else {
+                    dispatch(setFormFailure(response.data.message));
+                }
+            })
+            .catch((error) => {
+                dispatch(setFormFailure(error.message));
+            });
+    }
+}
