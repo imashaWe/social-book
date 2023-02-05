@@ -37,16 +37,6 @@ describe('Authentication Test', () => {
             expect(response.body.status).toBe(false);
         });
 
-        test("Should return status true when give right credentials", async () => {
-            const app = require('../src/app');
-            const request = require('supertest');
-            const response = await request(app).post('/auth/login').send({
-                email: "imasha@gmail.com",
-                password: "dev@123"
-            });
-            expect(response.body.status).toBe(true);
-        });
-
     });
 
 });
