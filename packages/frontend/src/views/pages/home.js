@@ -1,5 +1,5 @@
 import {Box, Fab, Paper, Stack} from "@mui/material";
-import Post from "../components/post";
+import PostCard from "../components/post-card";
 import AddIcon from '@mui/icons-material/Add';
 import {useEffect, useRef, useState} from "react";
 import CreatePostDialog from "../components/create-post-dialog";
@@ -97,6 +97,6 @@ function ListingView({appState, posts}) {
     } else if (isFailure) {
         return <ErrorView message={message}/>
     } else if (isSuccess) {
-        return posts.map((post, index) => <Post key={index} post={post}/>);
+        return posts.map((post, index) => <PostCard key={index} post={post}/>);
     }
 }

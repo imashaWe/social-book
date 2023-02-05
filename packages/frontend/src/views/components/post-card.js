@@ -2,25 +2,21 @@ import {
     Card,
     CardActions,
     CardContent,
-    CardHeader,
-    CardMedia,
+    CardMedia, Divider,
     Grid,
     IconButton,
     Typography
 } from "@mui/material";
 import FavoriteIcon from '@mui/icons-material/FavoriteOutlined';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import ShareIcon from '@mui/icons-material/Share';
-import ProfileAvatar from "../common/profile-avatar";
 import nameToTitle from "../../helpers/name-to-title";
 import Moment from "react-moment";
 import {useDispatch, useSelector} from "react-redux";
 import {likePost, unlikePost} from "../../actions/post-action";
-import MoreVertIcon from '@mui/icons-material/MoreVert';
 import {useState} from "react";
 import PostOptionMenu from "./post-option-menu";
 
-export default function Post({post, handleEdit, handleDelete}) {
+export default function PostCard({post, handleEdit, handleDelete}) {
     const dispatch = useDispatch();
     const fullName = nameToTitle(`${post.postedBy.firstName} ${post.postedBy.lastName}`);
     const {uid} = useSelector(state => state.user);
@@ -48,24 +44,24 @@ export default function Post({post, handleEdit, handleDelete}) {
     return (
         <>
             <Card elevation={5}>
-                <CardHeader
-                    avatar={
-                        <ProfileAvatar user={post.postedBy}/>
-                    }
+                {/*<CardHeader*/}
+                {/*    avatar={*/}
+                {/*        <ProfileAvatar user={post.postedBy}/>*/}
+                {/*    }*/}
 
-                    title={fullName}
-                    subheader={<Moment fromNow>{post.postedAt}</Moment>}
-                    action={
-                        <IconButton aria-label="settings" onClick={handleOptionMenuOpen}>
-                            <MoreVertIcon/>
-                        </IconButton>
-                    }
-                />
+                {/*    title={fullName}*/}
+                {/*    subheader={<Moment fromNow>{post.postedAt}</Moment>}*/}
+                {/*    action={*/}
+                {/*        <IconButton aria-label="settings" onClick={handleOptionMenuOpen}>*/}
+                {/*            <MoreVertIcon/>*/}
+                {/*        </IconButton>*/}
+                {/*    }*/}
+                {/*/>*/}
                 <CardMedia
                     component="img"
                     height="400"
                     image={post.imageURL}
-                    alt="Post Image"
+                    alt="PostCard Image"
                 />
 
                 <CardContent>
@@ -74,20 +70,31 @@ export default function Post({post, handleEdit, handleDelete}) {
                     </Typography>
                 </CardContent>
 
+                <Divider/>
+
                 <CardActions>
                     <Grid container justifyContent="space-between">
+
                         <Grid item>
                             <IconButton aria-label="add to favorites" onClick={handleLike}>
-                                {isLiked ? <FavoriteIcon color="primary"/> : <FavoriteBorderIcon/>}
-                                {likeCount > 0 &&
-                                    <Typography variant="body2" color="text.secondary">{likeCount}</Typography>}
+                                {isLiked ? <FavoriteIcon color="secondary"/> : <FavoriteBorderIcon/>}
+                                {likeCount > 0 && <Typography variant="body1">{likeCount}</Typography>}
                             </IconButton>
                         </Grid>
+
                         <Grid item>
-                            <IconButton aria-label="share">
-                                <ShareIcon/>
-                            </IconButton>
+                            <Typography variant='body1'>
+                                {fullName}
+                            </Typography>
                         </Grid>
+
+                        <Grid item>
+                            <Typography variant='body1'>
+                                <Moment fromNow>{post.postedAt}</Moment>
+                            </Typography>
+
+                        </Grid>
+
                     </Grid>
                 </CardActions>
             </Card>
