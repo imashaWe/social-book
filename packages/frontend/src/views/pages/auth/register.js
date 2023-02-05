@@ -73,15 +73,31 @@ export default function Register() {
 
                     </Grid>
 
-                    <TextFieldElement
-                        required
-                        fullWidth
-                        label="Email Address"
-                        name="email"
-                        autoComplete="email"
-                        margin="normal"
+                    <Grid container spacing={2}>
 
-                    />
+                        <Grid item xs={6}>
+                            <TextFieldElement
+                                required
+                                fullWidth
+                                label="Username"
+                                name="username"
+                                margin="normal"
+
+                            />
+                        </Grid>
+
+                        <Grid item xs={6}>
+                            <TextFieldElement
+                                required
+                                fullWidth
+                                label="Email Address"
+                                name="email"
+                                autoComplete="email"
+                                margin="normal"
+                            />
+                        </Grid>
+
+                    </Grid>
 
                     <PasswordElement
                         required
