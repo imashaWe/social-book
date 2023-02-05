@@ -78,11 +78,17 @@ export default function Register() {
                         <Grid item xs={6}>
                             <TextFieldElement
                                 required
+                                validation={{
+                                    pattern:
+                                        {
+                                            value: /^[A-Za-z0-9_]+$/,
+                                            message: 'Invalid username'
+                                        }
+                                }}
                                 fullWidth
                                 label="Username"
                                 name="username"
                                 margin="normal"
-
                             />
                         </Grid>
 
@@ -90,6 +96,7 @@ export default function Register() {
                             <TextFieldElement
                                 required
                                 fullWidth
+                                type="email"
                                 label="Email Address"
                                 name="email"
                                 autoComplete="email"
