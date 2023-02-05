@@ -7,7 +7,7 @@ import {useLocation, useNavigate} from "react-router-dom";
 import {setUserRegister} from "../../../actions/user-action";
 import {useEffect, useState} from "react";
 import ReCAPTCHA from "react-google-recaptcha";
-import logo from '../../../assets/images/logo.png';
+import PersonIcon from "@mui/icons-material/Person";
 
 export default function Register() {
 
@@ -33,13 +33,13 @@ export default function Register() {
     }
 
     return (
-        <Card elevation={10} sx={{width: .8}}>
+        <Card elevation={10}>
             <CardContent sx={{
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
             }}>
-                <img src={logo} alt="logo" style={{width: 80, height: 80}}/>
+                <PersonIcon sx={{fontSize:80}}/>
 
                 <Typography component="h1" variant="h5">
                     Create an Account
