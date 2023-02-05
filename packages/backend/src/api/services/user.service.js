@@ -14,7 +14,7 @@ const createUser = async (firstName, lastName, email, password) => {
 
     try {
         const newUser = await user.save();
-        await sendVerificationEmail(email);
+        await sendVerificationEmail(email, firstName);
         return {
             uid: user.id,
             firstName: newUser.firstName,
@@ -56,14 +56,14 @@ const loginUser = async (email, password) => {
 const generateToken = (uid, username) =>
     jwt.sign({uid: uid, username: username}, process.env.ACCESS_TOKEN_SECRET);
 
-const sendVerificationEmail = async (email) => {
+const sendVerificationEmail = async (email, name) => {
     const verificationCode = new VerificationCode({
         email: email
     });
     try {
         const newVerificationCode = await verificationCode.save();
         const verifyLink = `${process.env.APP_URL}/verify-email/${newVerificationCode.id}`;
-        await emailService.sendVerificationEmail(email, verifyLink);
+        await emailService.sendVerificationEmail(email, name, verifyLink);
     } catch (e) {
         throw e;
     }
