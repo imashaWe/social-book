@@ -13,3 +13,6 @@ export const SET_APP_STATE_DEFAULT = 'SET_APP_STATE_DEFAULT';
 
 export const SET_POSTS= 'SET_POSTS';
 export const UPDATE_POST = 'UPDATE_POST';
+
+export const ADD_POST_TO_FRONT = 'ADD_POST_TO_FRONT';
+export const ADD_POST_TO_BACK = 'ADD_POST_TO_BACK';

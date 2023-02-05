@@ -1,5 +1,5 @@
 import axios from "axios";
-import {SET_POSTS, UPDATE_POST} from "./types";
+import {ADD_POST_TO_FRONT, SET_POSTS, UPDATE_POST} from "./types";
 import {setAppStateFailure, setAppStateFetching, setAppStateSuccess} from "./app-state-action";
 import {setFormFailure, setFormSubmitting, setFormSuccess} from "./form-actions";
 
@@ -34,6 +34,10 @@ export const addPost = (image, description) => {
             .then((response) => {
                 if (response.data.status) {
                     dispatch(setFormSuccess());
+                    dispatch({
+                        type: ADD_POST_TO_FRONT,
+                        payload: response.data.data
+                    });
                 }
             }).catch((error) => {
             dispatch(setFormFailure(error.message));

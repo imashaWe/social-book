@@ -1,4 +1,4 @@
-import {SET_POSTS, UPDATE_POST} from "../actions/types";
+import {ADD_POST_TO_BACK, ADD_POST_TO_FRONT, SET_POSTS, UPDATE_POST} from "../actions/types";
 
 export default function postReducer(state = [], action) {
     switch (action.type) {
@@ -10,6 +10,10 @@ export default function postReducer(state = [], action) {
                 state[index] = action.payload;
             }
             return [...state];
+        case ADD_POST_TO_FRONT:
+            return [action.payload, ...state];
+        case ADD_POST_TO_BACK:
+            return [...state, action.payload];
         default:
             return state;
     }
