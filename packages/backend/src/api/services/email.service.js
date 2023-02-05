@@ -1,8 +1,16 @@
-const mailgun = require('mailgun-js');
+const nodemailer = require("nodemailer");
 const verifyEmailTemplate = require('../../utils/templates/email-verify');
+
 const ejs = require('ejs');
 
-const mg = mailgun({apiKey: process.env.MAILGUN_API_KEY, domain: process.env.MAILGUN_DOMAIN});
+const transporter = nodemailer.createTransport({
+    host: process.env.GOOGLE_SMTP_HOST,
+    port: process.env.GOOGLE_SMTP_PORT,
+    auth: {
+        user: process.env.GOOGLE_SMTP_USER,
+        pass: process.env.GOOGLE_SMTP_PASSWORD
+    }
+});
 
 const sendVerificationEmail = async (email, verifyLink) => {
     const html = ejs.render(verifyEmailTemplate, {verifyLink: verifyLink});
@@ -20,7 +28,7 @@ const sendHTMLEmail = async (from, to, subject, html) => {
         html: html
     };
     try {
-        return await mg.messages().send(data);
+        return await transporter.sendMail(data);
     } catch (error) {
         console.log(error);
         throw error;
