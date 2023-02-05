@@ -43,7 +43,7 @@ export default function AuthLayout({children}) {
                             <img src={surgeLogo} height={117} alt="surge-logo"/>
 
                             <Typography variant='h5' align='center'>
-                                Software Engineering Internship 2023
+                                Software Engineering Internship March 2023
                             </Typography>
 
                             <Typography>Imasha Weerakoon</Typography>
