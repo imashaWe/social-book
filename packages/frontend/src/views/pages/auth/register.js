@@ -7,7 +7,7 @@ import {useLocation, useNavigate} from "react-router-dom";
 import {setUserRegister} from "../../../actions/user-action";
 import {useEffect, useState} from "react";
 import ReCAPTCHA from "react-google-recaptcha";
-import PersonIcon from "@mui/icons-material/Person";
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 export default function Register() {
 
@@ -39,7 +39,7 @@ export default function Register() {
                 flexDirection: 'column',
                 alignItems: 'center',
             }}>
-                <PersonIcon sx={{fontSize:80}}/>
+                <AccountCircleIcon sx={{fontSize:80}}/>
 
                 <Typography component="h1" variant="h5">
                     Create an Account
