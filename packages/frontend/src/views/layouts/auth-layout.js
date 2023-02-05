@@ -2,6 +2,7 @@ import {Grid, Stack, Typography} from "@mui/material";
 import surgeLogo from "../../assets/images/surge-logo.png";
 import IconButton from "@mui/material/IconButton";
 import {Facebook, GitHub, LinkedIn} from "@mui/icons-material";
+import authCover from "../../assets/images/auth-cover.png";
 
 export default function AuthLayout({children}) {
     return (
@@ -10,7 +11,8 @@ export default function AuthLayout({children}) {
             <Grid item
                   xs={8}
                   sx={{
-                      backgroundColor: 'primary.main',
+                      backgroundImage: `url(${authCover})`,
+                      backgroundSize: 'cover',
                       height: "100vh"
                   }}>
 
