@@ -77,7 +77,11 @@ export default function PostCard({post, handleEdit, handleDelete}) {
                 <Divider/>
 
                 <CardActions>
-                    <Grid container justifyContent="space-between">
+                    <Grid
+                        container
+                        justifyContent="space-between"
+                        alignItems="center"
+                    >
 
                         <Grid item>
                             <IconButton aria-label="add to favorites" onClick={handleLike}>
