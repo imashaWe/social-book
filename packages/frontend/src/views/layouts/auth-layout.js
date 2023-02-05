@@ -2,70 +2,61 @@ import {Grid, Stack, Typography} from "@mui/material";
 import surgeLogo from "../../assets/images/surge-logo.png";
 import IconButton from "@mui/material/IconButton";
 import {Facebook, GitHub, LinkedIn} from "@mui/icons-material";
-import authBackground from '../../assets/images/authentication-cover.jpg'
 
 export default function AuthLayout({children}) {
     return (
-        <Grid
-            container
-            direction="row"
-            justifyContent="center"
-            alignItems="stretch"
-            height={'100vh'}
-        >
-            <Grid item xs={8} sx={{
-                pt: 10,
-                backgroundImage: `url(${authBackground})`,
-                backgroundSize: 'cover',
-            }}>
+        <Grid container>
 
-                <Grid container justifyContent='center'>
-                    <Grid item xs={8}>
+            <Grid item
+                  xs={8}
+                  sx={{
+                      backgroundColor: 'primary.main',
+                      height: "100vh"
+                  }}>
+
+                <Grid container
+                      justifyContent="center"
+                      alignItems="center"
+                      sx={{height: 1}}>
+
+                    <Grid item xs={6}>
                         {children}
                     </Grid>
+
                 </Grid>
 
             </Grid>
 
-            <Grid item xs={4} sx={{pt: 30}}>
-                <Stack
-                    direction="row"
-                    justifyContent="flex-start"
-                    alignItems="stretch">
+            <Grid item xs={4}>
+                <Grid container
+                      justifyContent="center"
+                      alignItems="center"
+                      sx={{height: 1}}>
+                    <Grid item xs={5}>
 
-                    <img src={surgeLogo} height={117} alt="surge-logo"/>
+                        <Stack justifyContent="center"
+                               alignItems="center"
+                               spacing={2}>
 
-                    <Stack direction="column"
-                           justifyContent="space-between"
-                           alignItems="flex-start"
-                           spacing={2}>
-                        <Typography variant='h3'>
-                            Internship
-                        </Typography>
-                        <Typography variant='h3'>
-                            2023
-                        </Typography>
-                    </Stack>
+                            <img src={surgeLogo} height={117} alt="surge-logo"/>
 
-                </Stack>
+                            <Typography variant='h5' align='center'>
+                                Software Engineering Internship 2023
+                            </Typography>
 
-                <Typography variant='h6'>
-                    Imasha Weerakoon
-                </Typography>
+                            <Typography>Imasha Weerakoon</Typography>
 
-                <Typography variant='small'>
-                    imasha98.we@gmail.com
-                </Typography>
+                            <Stack direction='row'>
+                                <IconButton><Facebook/></IconButton>
+                                <IconButton><LinkedIn/></IconButton>
+                                <IconButton><GitHub/></IconButton>
+                            </Stack>
 
-                <Stack direction='row'>
-                    <IconButton><Facebook/></IconButton>
-                    <IconButton><LinkedIn/></IconButton>
-                    <IconButton><GitHub/></IconButton>
-                </Stack>
-
+                        </Stack>
+                    </Grid>
+                </Grid>
             </Grid>
 
         </Grid>
-
     );
 }
