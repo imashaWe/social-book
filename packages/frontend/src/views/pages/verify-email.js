@@ -1,8 +1,26 @@
 import {Box, CircularProgress, Typography} from "@mui/material";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
+import {useEffect} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {setUserVerifyEmail} from "../../actions/user-action";
 
 export default function VerifyEmail() {
     const {token} = useParams();
+    const user = useSelector(state => state.user);
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(setUserVerifyEmail(token));
+    });
+
+    useEffect(() => {
+        if (user) {
+            setTimeout(() => {
+                navigate('/', {replace: true});
+            }, 1000);
+        }
+    }, [user]);
 
     return (
         <Box
