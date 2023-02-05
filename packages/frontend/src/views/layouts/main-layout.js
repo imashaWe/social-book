@@ -6,7 +6,7 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
-import {Container, Divider, ListItemIcon} from "@mui/material";
+import {Container, Divider, ListItemIcon, Stack} from "@mui/material";
 import nameToTitle from "../../helpers/name-to-title";
 import ProfileAvatar from "../common/profile-avatar";
 import {useDispatch, useSelector} from "react-redux";
@@ -93,15 +93,18 @@ function AuthenticatedAppBar(children, user) {
                         </Typography>
                         <Box sx={{flexGrow: 1}}/>
                         <Box sx={{display: {xs: 'none', md: 'flex'}}}>
-                            <Typography
-                                variant='body1'
-                                sx={{
-                                    mt: 3,
-                                    fontStyle: 'oblique'
-                                }}
+                            <Stack
+                                direction="column"
+                                justifyContent="flex-end"
+                                alignItems="flex-start"
                             >
-                                {user.username}
-                            </Typography>
+                                <Typography variant='h6'>{fullName}</Typography>
+                                <Typography
+                                    variant='body1'
+                                    sx={{fontStyle: 'oblique'}}>
+                                    {user.username}
+                                </Typography>
+                            </Stack>
                             <IconButton
                                 size="large"
                                 edge="end"
