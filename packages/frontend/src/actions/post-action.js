@@ -38,6 +38,8 @@ export const addPost = (image, description) => {
                         type: ADD_POST_TO_FRONT,
                         payload: response.data.data
                     });
+                } else {
+                    dispatch(setFormFailure(response.message || "Something went wrong"));
                 }
             }).catch((error) => {
             dispatch(setFormFailure(error.message));
