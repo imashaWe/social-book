@@ -22,6 +22,10 @@ jobs:
       - name: Build and run tests
         run: |
           docker-compose up backend-test
+          if [ $? -ne 0 ]; then
+            echo "Tests failed"
+            exit 1
+          fi
         env:
           DOCKER_CLI_EXPERIMENTAL: enabled
           
