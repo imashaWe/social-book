@@ -9,8 +9,12 @@ const addPost = async (description, imagePath, userID) => {
             imageURL: imageURl,
             postedBy: userID
         });
-        await post.save();
-        return post;
+        const response = await post.save();
+        return await Post
+            .findById(response.id)
+            .populate({path: 'postedBy', select: 'firstName lastName email'})
+            .populate({path: 'likes', select: 'firstName lastName email'});
+
     } catch (e) {
         throw e;
     }
