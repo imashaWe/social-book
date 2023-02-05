@@ -32,6 +32,26 @@ services:
     depends_on:
       - mongodb
 
+  backend-test:
+    build: packages/backend
+    command: yarn test
+    ports:
+      - "5000:5000"
+    environment:
+      - MONGO_URL=mongodb://mongodb:27017/live-chat
+      - ACCESS_TOKEN_SECRET=secret
+      - PORT=5000
+      - APP_URL=http://localhost:3000
+      - CLOUDINARY_CLOUD_NAME=dxrhrbot0
+      - CLOUDINARY_API_KEY=741876137836985
+      - CLOUDINARY_API_SECRET=_FWECuyMeYfP0MbBSvAzTxknRoU
+      - GOOGLE_SMTP_HOST=smtp.gmail.com
+      - GOOGLE_SMTP_PORT=587
+      - GOOGLE_SMTP_USER=sendmaillnow@gmail.com
+      - GOOGLE_SMTP_PASSWORD=ehqfwqbezrpholsd
+    depends_on:
+      - mongodb
+
   mongodb:
     image: mongo:latest
     ports:
