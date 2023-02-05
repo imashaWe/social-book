@@ -95,9 +95,12 @@ function AuthenticatedAppBar(children, user) {
                         <Box sx={{display: {xs: 'none', md: 'flex'}}}>
                             <Typography
                                 variant='body1'
-                                sx={{mt: 3}}
+                                sx={{
+                                    mt: 3,
+                                    fontStyle: 'oblique'
+                                }}
                             >
-                                {fullName}
+                                {user.username}
                             </Typography>
                             <IconButton
                                 size="large"

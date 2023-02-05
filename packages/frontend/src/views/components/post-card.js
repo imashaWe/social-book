@@ -9,7 +9,6 @@ import {
 } from "@mui/material";
 import FavoriteIcon from '@mui/icons-material/FavoriteOutlined';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import nameToTitle from "../../helpers/name-to-title";
 import Moment from "react-moment";
 import {useDispatch, useSelector} from "react-redux";
 import {likePost, unlikePost} from "../../actions/post-action";
@@ -19,7 +18,6 @@ import ImageViewer from "react-simple-image-viewer";
 
 export default function PostCard({post, handleEdit, handleDelete}) {
     const dispatch = useDispatch();
-    const fullName = nameToTitle(`${post.postedBy.firstName} ${post.postedBy.lastName}`);
     const {uid} = useSelector(state => state.user);
     const isLiked = post.likes.findIndex(like => like._id === uid) !== -1;
     const isAdmin = post.postedBy._id === uid;
@@ -90,7 +88,7 @@ export default function PostCard({post, handleEdit, handleDelete}) {
 
                         <Grid item>
                             <Typography variant='body1'>
-                                {fullName}
+                                {post.postedBy.username}
                             </Typography>
                         </Grid>
 
