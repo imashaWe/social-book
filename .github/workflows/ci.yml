@@ -4,11 +4,27 @@ on:
   push:
     branches:
       - master
+  pull_request:
+    branches:
+      - master
 
 env:
   DOCKER_CLI_EXPERIMENTAL: enabled
 
 jobs:
+  test-backend:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Build and run tests
+        run: |
+          docker-compose up backend-test
+        env:
+          DOCKER_CLI_EXPERIMENTAL: enabled
+          
   build-and-push:
     runs-on: ubuntu-latest
 
