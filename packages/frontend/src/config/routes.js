@@ -18,12 +18,12 @@ const routes = [
     {
         path: EMAIL_NOT_VERIFY_PATH,
         name: 'Email note verified',
-        element: <MainLayout><EmailNotVerified/></MainLayout>
+        element: <MainLayout hideUserMenu={true}><EmailNotVerified/></MainLayout>
     },
     {
         path: '/verify-email/:token',
         name: 'Verify Email',
-        element: <MainLayout><VerifyEmail/></MainLayout>
+        element: <MainLayout hideUserMenu={true}><VerifyEmail/></MainLayout>
     },
     {
         path: 'auth',
