@@ -12,7 +12,7 @@ export default function VerifyEmail() {
 
     useEffect(() => {
         dispatch(setUserVerifyEmail(token));
-    });
+    },[0]);
 
     useEffect(() => {
         if (user) {
