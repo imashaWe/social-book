@@ -6,7 +6,7 @@ const addPost = (req, res) => {
 
     postService.addPost(description, image, uid)
         .then(post => {
-            res.status(200).json({status: true, message: 'Post successfully added'});
+            res.status(200).json({status: true, message: 'Post successfully added', data: post});
         })
         .catch(err => {
             res.status(200).json({status: false, message: err.message});
