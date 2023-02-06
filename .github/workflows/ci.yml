@@ -11,6 +11,7 @@ on:
 env:
   DOCKER_CLI_EXPERIMENTAL: enabled
   ACCESS_TOKEN_SECRET: scret
+  MONGO_URL: mongodb://localhost:27017/social-book
 
 jobs:
   test:
