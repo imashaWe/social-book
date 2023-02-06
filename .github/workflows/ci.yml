@@ -10,6 +10,7 @@ on:
 
 env:
   DOCKER_CLI_EXPERIMENTAL: enabled
+  ACCESS_TOKEN_SECRET: scret
 
 jobs:
   test:
