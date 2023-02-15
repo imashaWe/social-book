@@ -26,7 +26,7 @@ const fetchPosts = async () => {
             .find()
             .populate({path: 'postedBy', select: 'firstName lastName username'})
             .populate({path: 'likes', select: 'firstName lastName username'})
-            .sort({createdAt: -1, likes: -1});
+            .sort({postedAt: -1, likes: -1});
     } catch (e) {
         throw e;
     }

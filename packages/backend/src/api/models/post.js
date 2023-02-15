@@ -10,7 +10,7 @@ const postSchema = new Schema({
     },
     postedAt: {
         type: Date,
-        default: Date.now()
+        default: Date.now
     },
     postedBy: {
         type: Schema.Types.ObjectId,
