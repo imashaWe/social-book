@@ -1,6 +1,6 @@
 
 # Social Book
-Live chat application. 
+Social Media Application. 
 
 
 ## Packages
@@ -14,10 +14,13 @@ Live chat application.
 
 ## Features
 
-- OAuth 2.0
-- Captcha for login/registration forms
-- Docker Containerized
-
+- Register and Login screens for authentication.
+- Integration of Captcha for login/registration forms.
+- Users can authenticate with their username/email and password.
+- Validation for all sorts of data and input fields.
+- Post listing indexed based on the following criteria:
+  -  Time created
+  -  Amount of likes
 
 
 ## Screenshots
@@ -69,16 +72,6 @@ Start the frontend
 ```bash
   yarn  run start
 ```
-
-
-## Environment Variables
-
-To run this project, you will need to add the following environment variables to your .env file
-
-`ACCESS_TOKEN_SECRET`
-
-`MONGO_URL`
-
 
 ## Deployment
 
