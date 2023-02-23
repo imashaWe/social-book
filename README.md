@@ -25,7 +25,7 @@ Social Media Application.
 
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![App Screenshot](https://res.cloudinary.com/dxrhrbot0/image/upload/v1677126703/portfolio/Social_Book_-_Google_Chrome_2_23_2023_9_55_55_AM_cnwsyd.png)
 
 
 
